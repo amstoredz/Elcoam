@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   /* --font-cairo is now defined by next/font in layout.tsx */
   --foreground-rgb: 0, 0, 0;

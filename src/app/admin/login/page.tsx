@@ -9,7 +9,7 @@ export default function AdminLogin() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'admin123') { 
+    if (password === 'mohabd1') { 
       localStorage.setItem('admin_auth', 'true');
       router.push('/admin');
     } else {

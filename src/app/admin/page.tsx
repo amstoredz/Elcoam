@@ -74,21 +74,36 @@ export default function AdminDashboard() {
 
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
-    await fetch('/api/products', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newProduct)
-    });
-    setNewProduct({ name: '', price: 0, description: '', image: '', category: '' });
-    fetchData();
-    alert('تم إضافة المنتج بنجاح');
+    try {
+      const response = await fetch('/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newProduct)
+      });
+      
+      if (!response.ok) throw new Error('فشل إضافة المنتج');
+      
+      setNewProduct({ name: '', price: 0, oldPrice: 0, description: '', image: '', category: '' });
+      fetchData();
+      alert('تم إضافة المنتج بنجاح');
+    } catch (error) {
+      console.error('خطأ:', error);
+      alert('حدث خطأ أثناء إضافة المنتج');
+    }
   };
 
   const handleDeleteProduct = async (id: string) => {
-      if(confirm('هل أنت متأكد من حذف هذا المنتج؟')) {
+      if(confirm('هل أنت متأكد؟')) {
           await fetch(`/api/products?id=${id}`, { method: 'DELETE' });
           fetchData();
       }
+  };
+
+  const handleDeleteOrder = async (id: string) => {
+    if(confirm('هل أنت متأكد من حذف هذا الطلب؟')) {
+        await fetch(`/api/orders?id=${id}`, { method: 'DELETE' });
+        fetchData();
+    }
   };
 
   if (isLoading) {
@@ -340,6 +355,9 @@ export default function AdminDashboard() {
                                 <div className="text-sm text-gray-400">الإجمالي</div>
                                 <div className="text-2xl font-black text-primary">{order.total.toLocaleString()} د.ج</div>
                             </div>
+                            <button onClick={() => handleDeleteOrder(order.id)} className="text-red-500 hover:bg-red-50 p-2 rounded-lg transition-colors">
+                                <Trash2 className="w-5 h-5" />
+                            </button>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="bg-gray-50 p-6 rounded-2xl">

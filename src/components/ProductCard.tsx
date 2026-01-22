@@ -39,9 +39,9 @@ export default function ProductCard({ product }: { product: Product }) {
           <h3 className="font-bold text-lg mb-2 line-clamp-1 cursor-pointer" onClick={() => setIsModalOpen(true)}>{product.name}</h3>
           
           <div className="flex justify-center items-center gap-3 mb-4">
-             <span className="text-2xl font-black">{product.price.toLocaleString()} د.ج</span>
+             <span className="text-2xl font-black">{product.price.toLocaleString('en-US')} د.ج</span>
              {hasDiscount && (
-               <span className="text-gray-400 line-through text-sm font-medium">{product.oldPrice!.toLocaleString()} د.ج</span>
+               <span className="text-gray-400 line-through text-sm font-medium">{product.oldPrice!.toLocaleString('en-US')} د.ج</span>
              )}
           </div>
 

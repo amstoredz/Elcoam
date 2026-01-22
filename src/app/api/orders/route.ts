@@ -1,4 +1,4 @@
-import { saveOrder, getOrders } from '@/lib/data';
+import { saveOrder, getOrders, deleteOrder } from '@/lib/data';
 import { Order } from '@/lib/types';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -58,4 +58,16 @@ export async function POST(req: NextRequest) {
   await sendTelegramNotification(order);
   
   return NextResponse.json(order);
+}
+
+export async function DELETE(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get('id');
+  
+  if (id) {
+      await deleteOrder(id);
+      return NextResponse.json({ success: true });
+  }
+  
+  return NextResponse.json({ error: 'ID required' }, { status: 400 });
 }

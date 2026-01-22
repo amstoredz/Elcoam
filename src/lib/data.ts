@@ -160,3 +160,20 @@ export async function saveOrder(order: Order) {
   orders.push(order);
   fs.writeFileSync(ordersFile, JSON.stringify(orders, null, 2));
 }
+
+export async function deleteOrder(id: string) {
+  if (await shouldUseMongo()) {
+    await OrderModel.deleteOne({ id });
+    return;
+  }
+
+  // Fallback
+  let orders: Order[] = [];
+  if (fs.existsSync(ordersFile)) {
+    try {
+      orders = JSON.parse(fs.readFileSync(ordersFile, 'utf-8'));
+    } catch (e) {}
+  }
+  orders = orders.filter(o => o.id !== id);
+  fs.writeFileSync(ordersFile, JSON.stringify(orders, null, 2));
+}
