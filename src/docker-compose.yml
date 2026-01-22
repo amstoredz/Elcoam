@@ -1,0 +1,13 @@
+version: '3'
+services:
+  amelectro:
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      # Persist the data directory
+      - ./src/data:/app/src/data
+    environment:
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+    restart: always

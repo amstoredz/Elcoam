@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "name": "خلاط كهربائي احترافي",
+    "price": 5500,
+    "oldPrice": 7000,
+    "description": "خلاط قوي بوعاء زجاجي وشفرات من الفولاذ المقاوم للصدأ",
+    "image": "https://placehold.co/600x400/png?text=Blender",
+    "category": "خلاطات"
+  },
+  {
+    "id": "2",
+    "name": "محضرة طعام متعددة الوظائف",
+    "price": 12000,
+    "oldPrice": 14500,
+    "description": "تقطيع، بشر، وعجن في جهاز واحد",
+    "image": "https://placehold.co/600x400/png?text=Food+Processor",
+    "category": "أجهزة مطبخ"
+  }
+]

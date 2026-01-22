@@ -1,0 +1,42 @@
+[
+  {
+    "id": "yhpendim9",
+    "createdAt": "2026-01-21T23:21:01.303Z",
+    "customer": {
+      "firstName": "Test",
+      "lastName": "User",
+      "phone": "0555555555",
+      "wilaya": "Alger",
+      "baladiya": "Hydra"
+    },
+    "products": [
+      {
+        "productId": "1",
+        "quantity": 1,
+        "name": "Test Product",
+        "price": 1000
+      }
+    ],
+    "total": 1000
+  },
+  {
+    "id": "okcx182j3",
+    "createdAt": "2026-01-22T00:14:56.335Z",
+    "products": [
+      {
+        "productId": "2",
+        "quantity": 1,
+        "name": "محضرة طعام متعددة الوظائف",
+        "price": 12000
+      }
+    ],
+    "total": 12000,
+    "customer": {
+      "firstName": "عل",
+      "lastName": "لات",
+      "phone": "-'-'-'",
+      "wilaya": "الجزائر",
+      "baladiya": "عغ"
+    }
+  }
+]
