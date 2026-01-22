@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Product } from '@/lib/types';
 
@@ -15,7 +15,7 @@ const wilayas = [
     "إن صالح", "إن قزام", "تقرت", "جانت", "المغير", "المنيعة"
 ];
 
-export default function CartPage() {
+function CartContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const productId = searchParams.get('productId');
@@ -185,5 +185,13 @@ export default function CartPage() {
         </button>
       </form>
     </div>
+  );
+}
+
+export default function CartPage() {
+  return (
+    <Suspense fallback={<div className="text-center p-10">جاري تحميل السلة...</div>}>
+      <CartContent />
+    </Suspense>
   );
 }
