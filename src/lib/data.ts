@@ -23,8 +23,13 @@ if (!fs.existsSync(dataDir)) {
 
 // Helper to check if we should use MongoDB
 async function shouldUseMongo() {
-  const conn = await connectDB();
-  return !!conn;
+  try {
+    const conn = await connectDB();
+    return !!conn;
+  } catch (e) {
+    console.warn("⚠️ MongoDB connection failed, falling back to file system:", e);
+    return false;
+  }
 }
 
 // --- Products ---
